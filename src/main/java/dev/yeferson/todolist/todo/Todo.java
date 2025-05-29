@@ -1,5 +1,5 @@
 
-package todo;
+package dev.yeferson.todolist.todo;
 
 import jakarta.persistence.*;
 
