@@ -25,18 +25,18 @@ jobs:
       - name: Copy JAR to EC2
         uses: appleboy/scp-action@v0.1.3
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           source: target/todolist-0.0.1-SNAPSHOT.jar
           target: /home/ubuntu
 
       - name: Start app on EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             pkill -f 'todolist-0.0.1-SNAPSHOT.jar' || true
             cd /home/ubuntu
